@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: dev
+  liquibase:
+    enabled: true
+    change-log: classpath:liquibase/master.xml
+  datasource:
+    url: jdbc:h2:file:~/.database/cardManagerDb;mode=Oracle
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect

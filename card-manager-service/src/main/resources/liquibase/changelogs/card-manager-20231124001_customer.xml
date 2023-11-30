@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="20231124001-1" author="lnuic">
+
+        <createSequence sequenceName="CM_CUSTOMER_SEQ" startValue="0" incrementBy="1"/>
+
+        <createTable tableName="CM_CUSTOMER">
+            <column name="ID" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SURNAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="OIB" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="STATUS" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="CM_CUSTOMER" cascadeConstraints="true"/>
+            <dropSequence sequenceName="CM_CUSTOMER_SEQ"/>
+        </rollback>
+
+        <createSequence sequenceName="CM_STATUS_SEQ" startValue="0" incrementBy="1"/>
+
+        <createTable tableName="CM_STATUS">
+            <column name="ID" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="CM_STATUS" cascadeConstraints="true"/>
+            <dropSequence sequenceName="CM_STATUS_SEQ"/>
+        </rollback>
+
+    </changeSet>
+</databaseChangeLog>
